@@ -1,1 +1,219 @@
-
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Pacing Calculator</title>
+        <link rel="icon" type="image/png" href="app.png">
+        <link rel="apple-touch-icon" href="app.png">
+        <link rel="stylesheet" href="style.css">
+        <!-- Load external CSS styles -->
+        <style>
+    </style>
+    </head>
+    <body>
+    <div class="mainStuffDiv", id= "homeSelectionPage">
+        <h1>My Pacing Calculator</h1>
+        <h3> Choose what you would like to do</h3>
+        <details>
+        <summary>custom calcutor</summary>
+        <p>you can choose the distance, splits, time and units.</p>
+        </details>
+        <button class= "homescreenButtons", id="singleDistanceSelect" onclick=pCalc.controls.outputs.showFrame(1)>single unit pacing calculator </button>
+        <button class= "homescreenButtons" id="doubleDistanceSelect" onclick=pCalc.controls.outputs.showFrame(2)>double unit pacing calculator </button>
+        <button class= "homescreenButtons" id="tripleDistanceSelect" onclick=pCalc.controls.outputs.showFrame(3)>triple unit pacing calculator </button>
+        <details>
+        <summary>preset calcutor</summary>
+        <p>you choose time and everything else is set up</p>
+        </details>
+        <button class= "homescreenButtons", id="fiveKimometerSelect" onclick=pCalc.controls.outputs.showFrame(4)> 5km pacing calculator </button>
+        <button class= "homescreenButtons" id="sixteenHundredMeterSelect" onclick=pCalc.controls.outputs.showFrame(5)> 1600m pacing calculator </button>
+        <button class= "homescreenButtons" id="thirtyTwoHundredMeterSelect" onclick=pCalc.controls.outputs.showFrame(6)> 3200m pacing calculator </button>
+        <div class= "homescreenButtons" style="margin: 0 auto;">
+        <h6> Unit splits and distances should only be up to the hundreths decimal place. the unit distance must be divisible by the unit split. minutes and seconds must be less than 60. rounding issues may occur because I am still working on fixing those.</h6></div>                       
+        </div>
+    <div class="mainStuffDiv", id= "singleUnitInputPage" style="display: none;">
+        <h3>Choose the settings. click enter when done</h3>
+        <details>
+        <summary> unit measurment</summary>
+        <p>you can choose miles, kilometers, or meters.</p>
+        </details>
+        <select id="unitSelectSingle" name="unitSelectSingle">
+        <option value="mile">Mile</option>
+        <option value="kilometer">kilometer</option>
+        <option value="meter">meter</option>
+        </select>
+        <details>
+        <summary> unit length</summary>
+        <p>how many miles/meters/kilometers is the total distance</p>
+        </details>
+        <input type="number" value="1" id="distanceSelectSingle" step="0.01"min=0.01>
+        <details>
+        <summary> unit split</summary>
+        <p>how long each split should be</p>
+        </details>
+        <input type="number" value="1" id="splitSelectSingle" step="0.01"min=0.01>
+        <details>
+        <summary> goal time mm:ss </summary>
+        <p>time you want mm:ss</p>
+        </details>
+        <input class="timing" type="number" value="0"min=0 max=59 step=1 id="minuteSelectSingle">
+       :
+        <input class="timing" type="number" value="0" min=0 max=59 step=1 id="secondSelectSingle">
+       </br>
+        <button class= "homescreenButtons" id="singleSubmitForm" onclick=pCalc.controls.steps.suiSteps()> Enter </button>
+        <button class= "homescreenButtons", id="singleExitForm" onclick=pCalc.controls.outputs.showFrame(0)>exit </button>
+        </div>
+    <div class="mainStuffDiv", id= "doubleUnitInputPage"style="display: none;">
+        <h3>Choose the settings. click enter when done</h3>
+        <details>
+        <summary> first unit measurment</summary>
+        <p>you can choose miles, kilometers, or meters. please chose different ones for each</p>
+        </details>
+        <select id="primaryUnitSelectDouble" name="primaryUnitSelectDouble">
+        <option value="mile">Mile</option>
+        <option value="kilometer">kilometer</option>
+        <option value="meter">meter</option>
+        </select>
+        <details>
+        <summary> secondary unit measurment</summary>
+        <p>you can choose miles, kilometers, or meters. please chose different ones for each</p>
+        </details>
+        <select id="secondaryUnitSelectDouble" name="secondaryUnitSelectDouble">
+        <option value="mile">Mile</option>
+        <option value="kilometer">kilometer</option>
+        <option value="meter">meter</option>
+        </select>
+        <details>
+        <summary> unit length</summary>
+        <p>how many miles/meters/kilometers is the total distance. this is using your first unit choice</p>
+        </details>
+        <input type="number" value="1" id="distanceSelectDouble" step="0.01" min=0.01>
+        <details><summary>Main unit split</summary>
+        <p>how long each split should be for the main unit</p>
+        </details>
+        <input type="number" value="1" id="pDistanceSplitDouble" step="0.01" min=0.01>
+        <details>
+        <summary> Secondary unit split</summary>
+        <p>how long each split should be for the secondary unit</p>
+        </details>
+        <input type="number" value="1" id="sDistanceSplitDouble" step="0.01" min=0.01>
+        <details>
+        <summary> goal time mm:ss </summary>
+        <p>time you want mm:ss</p>
+        </details>
+        <input class="timing" type="number" value="0"   min=0 max=59 step=1 id="minuteSelectDouble">
+       :
+        <input class="timing" type="number" value="0"   min=0 max=59 step=1 id="secondSelectDouble">
+       </br>
+        <button class= "homescreenButtons" id="doubleSubmitForm" onclick=pCalc.controls.steps.duiSteps()> Enter </button>
+        <button class= "homescreenButtons", id="doubleExitForm" onclick=pCalc.controls.outputs.showFrame(0)>exit </button>
+        </div>
+    <div class="mainStuffDiv", id= "tripleUnitInputPage"style="display: none;">
+        <h3>Choose the settings. click enter when done</h3>
+        <details>
+        <summary> first unit measurment</summary>
+        <p>you can choose miles, kilometers, or meters. please chose different ones for each</p>
+        </details>
+        <select id="primaryUnitSelectTriple" name="primaryUnitSelectTriple">
+        <option value="mile">Mile</option>
+        <option value="kilometer">kilometer</option>
+        <option value="meter">meter</option>
+        </select>
+        <details>
+        <summary> secondary unit measurment</summary>
+        <p>you can choose miles, kilometers, or meters. please chose different ones for each</p>
+        </details>
+        <select id="secondaryUnitSelectTriple" name="secondaryUnitSelectTriple">
+        <option value="mile">Mile</option>
+        <option value="kilometer">kilometer</option>
+        <option value="meter">meter</option>
+        </select>
+        <details>
+        <summary> tertiary unit measurment</summary>
+        <p>you can choose miles, kilometers, or meters. please chose different ones for each</p>
+        </details>
+        <select id="tertiaryUnitSelectTriple" name="tertiaryUnitSelectTriple">
+        <option value="mile">Mile</option>
+        <option value="kilometer">kilometer</option>
+        <option value="meter">meter</option>
+        </select>
+        <details>
+        <summary> unit length</summary>
+        <p>how many miles/meters/kilometers is the total distance. this is using your first unit choice</p>
+        </details>
+        <input type="number" value="1" id="distanceSelectTriple" step="0.01" min=0.01>
+        <details><summary>Main unit split</summary>
+        <p>how long each split should be for the main unit</p>
+        </details>
+        <input type="number" value="1" id="pDistanceSplitTriple" step="0.01" min=0.01>
+        <details>
+        <summary> Secondary unit split</summary>
+        <p>how long each split should be for the secondary unit</p>
+        </details>
+        <input type="number" value="1" id="sDistanceSplitTriple" step="0.01" min=0.01>
+        <details>
+        <summary> Tertiary unit split</summary>
+        <p>how long each split should be for the tertiary unit</p>
+        </details>
+        <input type="number" value="1" id="tDistanceSplitTriple" step="0.01" min=0.01>
+        <details>
+        <summary> goal time mm:ss </summary>
+        <p>time you want mm:ss</p>
+        </details>
+        <input class="timing" type="number" value="0"   min=0 max=59 step=1 id="minuteSelectTriple">
+       :
+        <input class="timing" type="number" value="0"   min=0 max=59 step=1 id="secondSelectTriple">
+       </br>
+        <button class= "homescreenButtons" id="TripleSubmitForm" onclick=pCalc.controls.steps.tuiSteps()> Enter </button>
+        <button class= "homescreenButtons", id="TripleExitForm" onclick=pCalc.controls.outputs.showFrame(0)>exit </button>
+        </div>
+    <div class="mainStuffDiv", id= "fiveKilometerInputPage"style="display: none;">
+        <h1>5 kilometer pacing calculator</h1>
+        <details>
+        <summary> goal time mm:ss </summary>
+        <p>time you want mm:ss</p>
+        </details>
+        <input class="timing" type="number" value="0"   min=0 max=59 step=1 id="minuteSelectFiveKilometer">
+       :
+        <input class="timing" type="number" value="0"   min=0 max=59 step=1 id="secondSelectFiveKilometer">
+       </br>
+        <button class= "homescreenButtons" id="FiveKilometerSubmitForm" onclick=pCalc.controls.steps.fkiSteps()> Enter </button>
+        <button class= "homescreenButtons", id="FiveKilometerExitForm" onclick=pCalc.controls.outputs.showFrame(0)>exit </button>
+        </div>
+    <div class="mainStuffDiv", id= "sixteenHundredInputPage"style="display: none;">
+        <h1>1600m pacing calculator</h1>
+        <details>
+        <summary> goal time mm:ss </summary>
+        <p>time you want mm:ss</p>
+        </details>
+        <input class="timing" type="number" value="0"   min=0 max=59 step=1 id="minuteSelectSixteenHundred">
+       :
+        <input class="timing" type="number" value="0"   min=0 max=59 step=1 id="secondSelectSixteenHundred">
+       </br>
+        <button class= "homescreenButtons" id="sixteenHundredSubmitForm" onclick=pCalc.controls.steps.shiSteps()> Enter </button>
+        <button class= "homescreenButtons" id="sixteenHundredExitForm" onclick=pCalc.controls.outputs.showFrame(0)>exit </button>
+        </div>
+    <div class="mainStuffDiv", id= "thirtyTwoHundredInputPage"style="display: none;">
+        <h1>3200m pacing calculator</h1>
+        <details>
+        <summary> goal time mm:ss </summary>
+        <p>time you want mm:ss</p>
+        </details>
+        <input class="timing" type="number" value="0"   min=0 max=59 step=1 id="minuteSelectThirtyTwoHundred">
+       :
+        <input class="timing" type="number" value="0"   min=0 max=59 step=1 id="secondSelectThirtyTwoHundred">
+       </br>
+        <button class= "homescreenButtons" id="thirtyTwoSubmitForm" onclick=pCalc.controls.steps.tthiSteps()> Enter </button>
+        <button class= "homescreenButtons", id="thirtyTwoHundredExitForm" onclick=pCalc.controls.outputs.showFrame(0)>exit </button>
+        </div>
+    <div class="mainStuffDiv" id="resultsPage"style="display: none;">
+        <h1>Results</h1>
+        <div id = "resultdiv"></div>
+        
+        <button class= "homescreenButtons", id="ResultExitForm" onclick=pCalc.controls.outputs.showFrame(0)>exit </button>
+        </div>
+        <!-- Load external JavaScript -->
+        <script src="javascriptR.js">
+        </script>
+    </body>
+</html>
